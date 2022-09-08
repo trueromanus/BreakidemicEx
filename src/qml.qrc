@@ -1,11 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Views/Boxes.qml</file>
-        <file>Views/Wall.qml</file>
-        <file>Views/WoodenBox.qml</file>
-        <file>Views/background.png</file>
-        <file>Views/woodenbox.png</file>
         <file>Box2DElements/BoxCollider.qml</file>
         <file>Box2DElements/PhysicsBody.qml</file>
         <file>Box2DElements/PhysicsWorld.qml</file>
@@ -14,5 +9,6 @@
         <file>Box2DElements/CircleCollider.qml</file>
         <file>Views/Vintage/Entity.qml</file>
         <file>Views/Brekidemic/WallBase.qml</file>
+        <file>Views/Brekidemic/Paddle.qml</file>
     </qresource>
 </RCC>

@@ -10,6 +10,7 @@
 #include "../vintage/entitymanager.h"
 #include "../vintage/entityitem.h"
 #include "../vintage/scene.h"
+#include "../vintage/playerinputcontroller.h"
 
 void registerVintageTypes();
 void registerBrekidemicTypes();
@@ -29,11 +30,15 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     const QUrl url(u"qrc:/main.qml"_qs);
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
+    QObject::connect(
+        &engine,
+        &QQmlApplicationEngine::objectCreated,
+        &app,
+        [url](QObject *obj, const QUrl &objUrl) {
+            if (!obj && url == objUrl) QCoreApplication::exit(-1);
+        },
+        Qt::QueuedConnection
+    );
     engine.load(url);
 
     return app.exec();
@@ -43,6 +48,7 @@ void registerVintageTypes() {
     qmlRegisterType<EntityItem>("Vintage", 1, 0, "EntityItem");
     qmlRegisterType<EntityManager>("Vintage", 1, 0, "EntityManager");
     qmlRegisterType<Scene>("Vintage", 1, 0, "Scene");
+    qmlRegisterType<PlayerInputController>("Vintage", 1, 0, "PlayerInputController");
 }
 
 void registerBrekidemicTypes() {

@@ -12,18 +12,44 @@ Window {
     visible: true
     title: "Breakidemic"
 
-    EntityManager {
-        id: entityManager
-    }
-
-    LocalStorage {
-        id: localStorage
-    }
-
     Scene {
         id: scene
         width: 1280
         height: 720
+        focus: true
+        /*transform: [
+            Translate { y: 20 },
+            Scale {
+                origin.x: screen.width / 2
+                origin.y: screen.height / 2
+                xScale: window.width / 640
+                yScale: window.height / 480
+            }
+        ]*/
+        Keys.onPressed: function(event) {
+            if (event.isAutoRepeat) return;
+
+            playerInputController.keyPressedHandler(
+                event.key,
+                event.nativeKey,
+                (event.modifiers & Qt.ControlModifier),
+                (event.modifiers & Qt.ShiftModifier),
+                (event.modifiers & Qt.AltModifier)
+            );
+            event.accepted = true;
+        }
+        Keys.onReleased: function(event) {
+            if (!event.isAutoRepeat) return;
+
+            playerInputController.keyReleasedHandler(
+                event.key,
+                event.nativeKey,
+                (event.modifiers & Qt.ControlModifier),
+                (event.modifiers & Qt.ShiftModifier),
+                (event.modifiers & Qt.AltModifier)
+            );
+            event.accepted = true;
+        }
 
         Rectangle {
             anchors.fill: parent
@@ -66,6 +92,24 @@ Window {
             y: 100
         }
 
+        Paddle {
+            id: playerPaddle
+            x: 1269
+            y: 400
+            name: "player"
+        }
+    }
+
+    EntityManager {
+        id: entityManager
+    }
+
+    LocalStorage {
+        id: localStorage
+    }
+
+    PlayerInputController {
+        id: playerInputController
     }
 
     PhysicsWorld {

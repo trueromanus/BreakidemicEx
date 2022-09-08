@@ -66,6 +66,7 @@ qt_add_executable(breakidemic
     vintage/entityitem.h vintage/entityitem.cpp
     vintage/entitymanager.h vintage/entitymanager.cpp
     vintage/scene.h vintage/scene.cpp
+    vintage/playerinputcontroller.h vintage/playerinputcontroller.cpp
 
     qml.qrc
 )
