@@ -33,7 +33,7 @@ Entity {
         CircleCollider {
             id: ballCollider
             friction: 1
-            restitution: 0.7
+            restitution: 0.5
             radius: root.width / 2
             density: 1
             onBeginContact: function (other) {

@@ -39,7 +39,7 @@ Window {
             event.accepted = true;
         }
         Keys.onReleased: function(event) {
-            if (!event.isAutoRepeat) return;
+            if (event.isAutoRepeat) return;
 
             playerInputController.keyReleasedHandler(
                 event.key,
@@ -110,6 +110,9 @@ Window {
 
     PlayerInputController {
         id: playerInputController
+        onCurrentKeysChanged: {
+            console.log(playerInputController.currentKeys);
+        }
     }
 
     PhysicsWorld {
