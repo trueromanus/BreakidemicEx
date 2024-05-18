@@ -2,9 +2,8 @@ import QtQuick
 import Vintage
 import Brekidemic
 import '../../Box2DElements'
-import "../Vintage"
 
-Entity {
+EntityItem {
     id: root
     width: 10
     height: 100

@@ -78,3 +78,8 @@ void PlayerInputController::keyReleasedHandler(int key, int nativeCode, bool con
         emit currentKeysChanged();
     }
 }
+
+void PlayerInputController::addCommand(QStringList keys, const QString &command)
+{
+
+}

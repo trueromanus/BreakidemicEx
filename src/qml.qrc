@@ -7,7 +7,6 @@
         <file>Box2DElements/PhysicsDebugDraw.qml</file>
         <file>Views/Brekidemic/Ball.qml</file>
         <file>Box2DElements/CircleCollider.qml</file>
-        <file>Views/Vintage/Entity.qml</file>
         <file>Views/Brekidemic/WallBase.qml</file>
         <file>Views/Brekidemic/Paddle.qml</file>
     </qresource>

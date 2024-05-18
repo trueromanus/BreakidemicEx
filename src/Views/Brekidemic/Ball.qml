@@ -2,9 +2,8 @@ import QtQuick
 import Vintage
 import Brekidemic
 import '../../Box2DElements'
-import "../Vintage"
 
-Entity {
+EntityItem {
     id: root
     name: "ball"
     kind: "interactiveelements"

@@ -1,8 +1,8 @@
 import QtQuick
 import '../../Box2DElements'
-import "../Vintage"
+import Vintage
 
-Entity {
+EntityItem {
     id: root
     kind: `wall`
 

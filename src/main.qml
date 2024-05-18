@@ -26,30 +26,6 @@ Window {
                 yScale: window.height / 480
             }
         ]*/
-        Keys.onPressed: function(event) {
-            if (event.isAutoRepeat) return;
-
-            playerInputController.keyPressedHandler(
-                event.key,
-                event.nativeKey,
-                (event.modifiers & Qt.ControlModifier),
-                (event.modifiers & Qt.ShiftModifier),
-                (event.modifiers & Qt.AltModifier)
-            );
-            event.accepted = true;
-        }
-        Keys.onReleased: function(event) {
-            if (event.isAutoRepeat) return;
-
-            playerInputController.keyReleasedHandler(
-                event.key,
-                event.nativeKey,
-                (event.modifiers & Qt.ControlModifier),
-                (event.modifiers & Qt.ShiftModifier),
-                (event.modifiers & Qt.AltModifier)
-            );
-            event.accepted = true;
-        }
 
         Rectangle {
             anchors.fill: parent
@@ -98,10 +74,6 @@ Window {
             y: 400
             name: "player"
         }
-    }
-
-    EntityManager {
-        id: entityManager
     }
 
     LocalStorage {

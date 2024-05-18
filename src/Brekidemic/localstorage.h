@@ -12,7 +12,8 @@ class LocalStorage : public QObject
 public:
     explicit LocalStorage(QObject *parent = nullptr);
 #ifdef Q_OS_WIN
-    QString assetsPath() const noexcept { return "file:///" + QCoreApplication::applicationDirPath() + "/assets/"; }
+    //QString assetsPath() const noexcept { return "file:///" + QCoreApplication::applicationDirPath() + "/assets/"; }
+    QString assetsPath() const noexcept { return "file:///C:/work/Repositories/Brekidemic/BreakidemicEx/assets/"; }
 #elif
     QString assetsPath() const noexcept { return "file://" + QCoreApplication::applicationDirPath() + "/assets/"; }
 #endif

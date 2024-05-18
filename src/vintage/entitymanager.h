@@ -3,21 +3,21 @@
 
 #include <QObject>
 #include <QMap>
-#include "entityitem.h"
+#include <QQuickItem>
 
 class EntityManager : public QObject
 {
     Q_OBJECT
 
 private:
-    QMap<QString, EntityItem*> m_entities { QMap<QString, EntityItem*>() };
+    QMap<QString, QQuickItem*> m_entities { QMap<QString, QQuickItem*>() };
 
 public:
     explicit EntityManager(QObject *parent = nullptr);
 
-    EntityItem* getEntity(const QString& id) const noexcept;
-    Q_INVOKABLE void registerEntity(const EntityItem* entity) noexcept;
-    Q_INVOKABLE void unregisterEntity(const EntityItem* entity) noexcept;
+    QQuickItem* getEntity(const QString& id) const noexcept;
+    Q_INVOKABLE void registerEntity(const QQuickItem* entity) noexcept;
+    Q_INVOKABLE void unregisterEntity(const QQuickItem* entity) noexcept;
 
 signals:
 

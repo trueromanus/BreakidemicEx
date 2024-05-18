@@ -79,10 +79,8 @@ set_target_properties(breakidemic PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-target_compile_definitions(breakidemic
-    PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(breakidemic
-    PRIVATE Qt6::Quick PUBLIC Box2D)
+target_compile_definitions(breakidemic PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
+target_link_libraries(breakidemic PRIVATE Qt6::Quick PUBLIC Box2D)
 target_link_libraries(breakidemic PRIVATE Qt6::Concurrent)
 target_link_libraries(breakidemic PRIVATE Qt6::Qml)
 target_link_libraries(breakidemic PRIVATE Qt6::QuickControls2)

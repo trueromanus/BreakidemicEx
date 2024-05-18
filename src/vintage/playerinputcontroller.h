@@ -13,7 +13,8 @@ class PlayerInputController : public QObject
 private:
     QMap<uint32_t, QString> m_keyNames { QMap<uint32_t, QString>() };
     QMap<uint32_t, QString> m_nativeKeyNames { QMap<uint32_t, QString>() };
-    QStringList m_currentKeys { QStringList() };
+    QStringList m_currentKeys { QStringList(100) };
+    QMap<QString, QString> m_commands { QMap<QString, QString>() };
 
 public:
     explicit PlayerInputController(QObject *parent = nullptr);
@@ -22,6 +23,7 @@ public:
 
     Q_INVOKABLE void keyPressedHandler(int key, int nativeCode, bool control, bool shift, bool alt);
     Q_INVOKABLE void keyReleasedHandler(int key, int nativeCode, bool control, bool shift, bool alt);
+    Q_INVOKABLE void addCommand(QStringList keys, const QString& command);
 
 signals:
     void currentKeysChanged();

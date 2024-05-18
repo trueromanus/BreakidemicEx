@@ -3,7 +3,7 @@
 EntityItem::EntityItem(QObject *parent)
     : QQuickItem()
 {
-
+    connect(this, &EntityItem::parentChanged, this, &EntityItem::innerParentChanged);
 }
 
 void EntityItem::setKind(const QString &kind) noexcept
@@ -36,4 +36,41 @@ void EntityItem::setComponent(const QObject *component) noexcept
 
     m_component = const_cast<QObject *>(component);
     emit componentChanged();
+}
+
+void EntityItem::componentComplete()
+{
+    QQuickItem::componentComplete();
+
+    tryFillParentScene();
+
+    if (m_scene != nullptr) m_scene->entityManager()->registerEntity(this);
+}
+
+void EntityItem::updateEntity()
+{
+
+}
+
+void EntityItem::tryFillParentScene()
+{
+    QQuickItem* current = parentItem();
+
+    while (current != nullptr) {
+        auto value = static_cast<Scene*>(current);
+        if (value != nullptr) {
+            m_scene = value;
+            break;
+        } else {
+            current = parentItem();
+            if (current == nullptr) break;
+        }
+    }
+
+    if (m_scene == nullptr) qDebug() << "Can't founded scene for entity " << m_name << " (" << m_kind << "):" << m_tag;
+}
+
+void EntityItem::innerParentChanged(QQuickItem *item)
+{
+    if (item == nullptr && m_scene != nullptr) m_scene->entityManager()->unregisterEntity(this);
 }
