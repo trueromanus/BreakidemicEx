@@ -37,3 +37,8 @@ void EntityManager::unregisterEntity(const QQuickItem *entity) noexcept
 
     m_entities.remove(key);
 }
+
+void EntityManager::updateAllEntities()
+{
+
+}

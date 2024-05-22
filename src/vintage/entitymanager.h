@@ -19,6 +19,8 @@ public:
     Q_INVOKABLE void registerEntity(const QQuickItem* entity) noexcept;
     Q_INVOKABLE void unregisterEntity(const QQuickItem* entity) noexcept;
 
+    void updateAllEntities();
+
 signals:
 
 };
